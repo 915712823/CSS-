@@ -10,7 +10,7 @@
 | [[*attribute*\|=*value*\]](https://www.w3school.com.cn/cssref/selector_attribute_value_start.asp) | 用于选取带有以指定值开头的属性值的元素，该值必须是整个单词。 |
 | [[*attribute*^=*value*\]](https://www.w3school.com.cn/cssref/selector_attr_begin.asp) | 匹配属性值以指定值开头的每个元素。                           |
 | [[*attribute*$=*value*\]](https://www.w3school.com.cn/cssref/selector_attr_end.asp) | 匹配属性值以指定值结尾的每个元素。                           |
-| [[*attribute**=*value*\]](https://www.w3school.com.cn/cssref/selector_attr_contain.asp) | 匹配属性值中包含指定值的每个元素。                           |
+| [[attribute*=value\]](https://www.w3school.com.cn/cssref/selector_attr_contain.asp) | 匹配属性值中包含指定值的每个元素。                           |
 
 ## 后代选择器与子元素选择器的区别
 
@@ -76,11 +76,11 @@ nav ul li{
 
 子元素
 
-![image-20210318104721968](C:\Users\Administrator\Desktop\项目笔记\CSS\image-20210318104721968.png)
+![](C:\Users\Administrator\Desktop\项目笔记\CSS易忘易混笔记\image-20210318104721968.png)
 
 后代
 
-![image-20210318110808703](C:\Users\Administrator\Desktop\项目笔记\CSS\image-20210318110808703.png)
+![](C:\Users\Administrator\Desktop\项目笔记\CSS易忘易混笔记\image-20210318110808703.png)
 
 ## +选择器与~选择 器的区别
 
