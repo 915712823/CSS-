@@ -4,10 +4,6 @@
 
 是一种算法，把一系列的数据按照一定的顺序进行排列显示(从小到大或从大到小)。
 
-
-
-
-
 ## 函数
 
 ### 返回值（return）
@@ -30,4 +26,8 @@ function getSum(num1,num2){
 }
 console.log(getSum(1, 2));      //[3, -1, 2, 0.5]
 ```
+
+## 预解析
+
+[pink老师详细讲解]: https://www.bilibili.com/video/BV1Sy4y1C7ha?p=141&amp;spm_id_from=pageDriver
 
