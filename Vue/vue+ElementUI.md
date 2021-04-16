@@ -1,4 +1,4 @@
-### 创建一个ElementUI后台管理系统项目
+### 创建一个ElementUI项目
 
 #### 1.创建项目:vue create demo(项目名) 
 
