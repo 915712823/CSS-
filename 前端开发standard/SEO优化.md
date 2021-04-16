@@ -22,7 +22,20 @@
 3.为了搜索引擎收录我们，我们链接里面要放文字(网站名称），但是文字不要显示出来。
 
 - ​	方法1 : text-indent移到盒子外面( text-indent: -9999px)，然后overflow:hidden; 淘宝的做法。
+
 - ​	方法2∶直接给<font color="red">font-size:0; </font>就看不到文字了，京东的做法。
+
+- ```css
+  display:block;
+  width: 171px;
+  height: 61px;
+  background: url(../images/logo.png) no-repeat;
+  /* 隐藏a标签文字 */
+  /* font-size:0;京东做法 */
+  /* 淘宝做法 */
+  text-indent: -9999px;
+  overflow:hidden;
+  ```
 
 4.最后给链接一个title属性，这样鼠标放到logo上就可以看到提示文字了。
 
