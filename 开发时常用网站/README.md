@@ -19,3 +19,11 @@ https://fontawesome.dashgame.com/            目前比较流行的字体图标�
 https://www.iconfont.cn/               阿里巴巴矢量图标库，不止有图标，还有插画，支持svg、png、ai、svg代码
 
 icomoon.io                                国外服务器 ，打开较慢
+
+
+
+
+
+3.Vue轮播图插件
+
+[vue-awesome-swiper | Homepage | Surmon's projects](https://github.surmon.me/vue-awesome-swiper/)     //Vue轮播图插件，多样化
