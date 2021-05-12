@@ -34,7 +34,9 @@
     exprot default{
         name:"son",
         //接受父组件传值
-        props:["data"]
+        props:{
+          data: String
+        }
     }
 </script>
 ```
@@ -42,35 +44,60 @@
 2. 子组件向父组件传递数据
 
 ```html
-//子组件通过$emit方法传递参数
-<template>
-   <div v-on:click="events"></div>
+<!--父组件模板-->
+<div id="app">
+  <cpn @item-click="cpnClick"></cpn>
+</div>
+
+<!--子组件模板-->
+<template id="cpn">
+  <div>
+    <button v-for="item in categories"
+            @click="btnClick(item)">
+      {{item.name}}
+    </button>
+  </div>
 </template>
+
+<script src="../js/vue.js"></script>
 <script>
-    //引入子组件
-    import Main form "./main"
 
-    exprot default{
-        methods:{
-            events:function(){
-
-            }
-        }
+  // 1.子组件
+  const cpn = {
+    template: '#cpn',
+    data() {
+      return {
+        categories: [
+          {id: 'aaa', name: '热门推荐'},
+          {id: 'bbb', name: '手机数码'},
+          {id: 'ccc', name: '家用家电'},
+          {id: 'ddd', name: '电脑办公'},
+        ]
+      }
+    },
+    methods: {
+      btnClick(item) {
+        // 发射事件: 自定义事件
+        this.$emit('item-click', item)
+      }
     }
-</script>
+  }
 
-
-//
-
-<template>
-    <div>{{data}}</div>
-</template>
-<script>
-    exprot default{
-        name:"son",
-        //接受父组件传值
-        props:["data"]
+  // 2.父组件
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好啊'
+    },
+    components: {
+      cpn
+    },
+    methods: {
+      cpnClick(item) {
+        console.log('cpnClick', item);
+      }
     }
+  })
 </script>
 ```
 
