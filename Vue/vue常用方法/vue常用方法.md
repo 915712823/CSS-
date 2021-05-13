@@ -191,3 +191,31 @@ export default new vuex.store({
 import store from './store'
 ...
 ```
+
+### axios请求拦截器  |  响应拦截器
+
+request.js
+
+```javascript
+import axios from 'axios'
+axios.default.baseURL = '172.0.0.1:3000/'
+//请求拦截器
+axios.interceptors.request.use(config=>{
+  return config
+})
+axios.interceptors.response.use(response=>{
+  return response
+},err=>{
+  return Promise.reject(err)
+})
+export default axios
+```
+
+http.js(api封装)
+
+```javascript
+import axios from './request'
+
+
+```
+
