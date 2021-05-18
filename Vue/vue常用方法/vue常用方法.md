@@ -176,7 +176,7 @@ const  home = r => require.ensure( [], () => r (require('../../common/home.vue')
 
 ### vuex 是什么？怎么使用？哪种功能场景使用它？
 
-vue 框架中状态管理。在 main.js 引入 store，注入。新建了一个目录 store，….. export 。场景有：单页应用中，组件之间的状态。音乐播放、登录状态、加入购物车
+vue 框架中状态管理。在 main.js 引入 store，注入。新建了一个目录 store，….. export 。场景有：单页应用中，组件之间的状态。音乐播放、登录状态、加入购物车、用户名称头像地理位置、商品收藏、购物车
 
 ```js
 // 新建 store.js
@@ -184,7 +184,11 @@ import vue from 'vue'
 import vuex form 'vuex'
 vue.use(vuex)
 export default new vuex.store({
-	//...code
+	state:{},
+  mutations:{},
+  actions:{},
+  getters:{}
+  modules:{},
 })
 
 //main.js
@@ -217,5 +221,140 @@ http.js(api封装)
 import axios from './request'
 
 
+```
+
+### 路由守卫
+
+// 导航守卫 
+
+// 前置守卫
+
+```javascript
+router.beforeEach((to, from, next) => {
+
+ // 从from跳转到to
+
+ // 1.设置每个页面的title
+
+ console.log(to);
+
+ document.title = to.matched[0].meta.title
+
+ next()
+
+})
+```
+
+// 后置钩子(hook) 
+
+```javascript
+router.afterEach((to, from) => {
+
+})
+```
+
+### keep-alive
+
+有两个属性{
+
+·exclude	<keep-alive exclude="组件一,组件二"></keep-alive>
+
+·include	与上同
+
+}
+
+#### 一、页面嵌套路由缓存
+
+##### 1.内容外用keep-alive包裹
+
+##### 2.用activated/deactivated方法
+
+##### 3.使用path属性记录离开时的路径，在beforeRouteLeave中记录
+
+![image-20210517142702189](C:\Users\Administrator\Desktop\项目笔记\Vue\vue常用方法\vue常用方法.assets\image-20210517142702189.png)
+
+
+
+### 给Vue文件夹起别名以及后缀省略
+
+#### webpack配置中的resolve
+
+##### vue-cli2.x
+
+```javascript
+ resolve: {
+  extensions: ['.js', '.vue', '.json'],  
+  alias: {
+   '@': resolve('src'),
+   'components':resolve('src/components'),
+   'assets':resolve('src/assets'),
+   'views':resolve('src/views'),
+  }
+ },
+```
+
+###### 使用
+
+若是用import引入文件
+
+```javascript
+import MainTabBar from "components/tabBar/MainTabBar";
+```
+
+其他引入
+
+```html
+<img slot="tabbar-icon" src="~assets/tabbar/home.svg" />
+```
+
+
+
+### Promise
+
+#### 基础用法
+
+##### 成功
+
+```javascript
+new Promise((resolve,reject) => {
+  setTimeout(() => {
+    //成功的回调
+    resolve('Hello World')
+  })
+}).then( data => {
+  // 处理返回的数据
+})
+```
+
+##### 失败
+
+```javascript
+new Promise((resolve,reject) => {
+  setTimeout(() => {
+    //失败的回调
+    reject('error message')
+  })
+}).then( (data) => {
+  // 处理返回的数据
+}).catch( (err) => {
+  //错误处理
+})
+```
+
+##### 结合
+
+```javascript
+new Promise((resolve, reject) => {
+  setTimeout(() => {
+    //成功的回调
+    resolve('Hello World')
+    //失败的回调
+    reject('error message')
+  })
+}).then(data => {
+  // 处理成功返回的数据
+}).catch(err => {
+  // 处理失败返回的数据
+})
 ```
 
