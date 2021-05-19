@@ -1,6 +1,6 @@
 ## 使用 axios 拦截器解决「 前端并发冲突 」 问题
 
-![图片](C:\Users\Administrator\Desktop\项目笔记\axios\前端请求拦截器解决并发\微信图片_20210513084936.png)
+![图片](C:\Users\Administrator\Desktop\项目笔记\网络请求\axios\前端请求拦截器解决并发\微信图片_20210513084936.png)
 
 # 背景
 

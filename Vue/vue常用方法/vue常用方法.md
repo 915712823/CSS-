@@ -277,9 +277,9 @@ router.afterEach((to, from) => {
 
 ### 给Vue文件夹起别名以及后缀省略
 
-#### webpack配置中的resolve
+#### vue2.x
 
-##### vue-cli2.x
+##### webpack配置中的resolve
 
 ```javascript
  resolve: {
@@ -305,6 +305,22 @@ import MainTabBar from "components/tabBar/MainTabBar";
 
 ```html
 <img slot="tabbar-icon" src="~assets/tabbar/home.svg" />
+```
+
+#### vue3.x及以上
+
+##### 创建vue.config.js文件
+
+```javascript
+module.export = {
+  configureWebpack: { //配置webpack
+    resolve: {
+      alias: {   //配置路径别名  default: '@': 'src'
+        
+      }
+    }
+  }
+}
 ```
 
 
@@ -357,4 +373,21 @@ new Promise((resolve, reject) => {
   // 处理失败返回的数据
 })
 ```
+
+### vue.config.js 常用配置
+
+```javascript
+module.export = {
+  configureWebpack: { //配置webpack
+    resolve: {
+      extensions: ['.css'],  //配置后缀省略 default: vue js json
+      alias: {   //配置路径别名  default: '@': 'src'
+        
+      }
+    }
+  }
+}
+```
+
+
 
