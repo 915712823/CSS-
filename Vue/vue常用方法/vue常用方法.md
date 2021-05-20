@@ -301,7 +301,7 @@ router.afterEach((to, from) => {
 import MainTabBar from "components/tabBar/MainTabBar";
 ```
 
-其他引入
+dom引入
 
 ```html
 <img slot="tabbar-icon" src="~assets/tabbar/home.svg" />
