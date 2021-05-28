@@ -101,6 +101,32 @@
 </script>
 ```
 
+### 在filters中使用this  (注意传参)
+
+```vue
+<template>
+  <div class="detail-comment">
+  	<span>{{ item.created | formatedate(that) }}</span>
+  </div>
+</template>
+<script>
+  data() {
+    return {
+      that: this
+    };
+  },
+  filters: {
+    formatedate(val, that) {
+      console.log(that.$utils);
+      const time = new Date(val * 1000);
+      return that.$utils.formatDate(time);
+    }
+  },
+</script>
+```
+
+
+
 ### active-class 是哪个组件的属性？
 
 vue-router 模块的 router-link 组件。
@@ -301,7 +327,7 @@ router.afterEach((to, from) => {
 import MainTabBar from "components/tabBar/MainTabBar";
 ```
 
-dom引入
+dom或其他引入
 
 ```html
 <img slot="tabbar-icon" src="~assets/tabbar/home.svg" />
