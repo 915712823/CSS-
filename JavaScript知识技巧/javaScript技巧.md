@@ -1020,3 +1020,93 @@ Math.pow(2,3); // 8
 //shorthand
 2**3 // 8
 ```
+
+## 1、随机获取布尔值
+
+```
+const randomBoolean =  () => Math.random() >= 0.5;
+console.log(randomBoolean());
+```
+
+Math.random() 输出 0 - 1 之间的随机数，然后判断这个随机数是否大于等于 0.5。
+
+这就说明有 50% 的机会得到真值或假值。
+
+## 2、判断给的日期是工作日还是双休日
+
+```
+const isWeekday = (date) => date.getDay() % 6 !== 0;
+console.log(isWeekday(new Date(2021, 0, 11)));
+// 结果: true (Monday)
+console.log(isWeekday(new Date(2021, 0, 10)));
+// 结果: false (Sunday)
+```
+
+## 3、反转字符串
+
+```
+const reverse = str => str.split('').reverse().join('');
+reverse('hello world');     
+// 结果 : 'dlrow olleh'
+```
+
+## 4、判断数字是偶数还是奇数
+
+```
+const isEven = num => num % 2 === 0;
+console.log(isEven(2));
+// 结果: true
+console.log(isEven(3));
+// 结果: false
+```
+
+## 5、从日期获取当地时间
+
+```
+const timeFromDate = date => date.toTimeString().slice(0, 8);
+console.log(timeFromDate(new Date(2021, 0, 10, 17, 30, 0))); 
+// 结果: "17:30:00"
+console.log(timeFromDate(new Date()));
+// 结果: will log the current time
+```
+
+## 6、使用 `Math.pow()` 方法，将数字四舍五入到固定的小数点
+
+```
+const toFixed = (n, fixed) => ~~(Math.pow(10, fixed) * n) / Math.pow(10, fixed);
+// Examples
+toFixed(25.198726354, 1);       // 25.1
+toFixed(25.198726354, 2);       // 25.19
+toFixed(25.198726354, 3);       // 25.198
+toFixed(25.198726354, 4);       // 25.1987
+toFixed(25.198726354, 5);       // 25.19872
+toFixed(25.198726354, 6);       // 25.198726
+```
+
+## 7、使用 `document.activeElement` 属性，检查元素当前是否处于焦点
+
+```
+const elementIsInFocus = (el) => (el === document.activeElement);
+elementIsInFocus(anyElement);
+
+//结果: will return true if in focus, false if not in focus
+```
+
+## 8、检查当前用户是否在 Apple 设备上
+
+```
+const isAppleDevice = /Mac|iPod|iPhone|iPad/.test(navigator.platform);
+console.log(isAppleDevice);
+
+//结果: will return true if user is on an Apple device
+```
+
+## 9、滚动到页面顶部
+
+使用 `window.scrollTo()` 方法将 `x = 0` 和 `y = 0` 。
+
+```
+const goToTop = () => window.scrollTo(0, 0);
+goToTop();
+// Result: will scroll the browser to the top of the page
+```
