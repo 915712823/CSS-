@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.6.13/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.5.1/dist/vue-router.js"></script>
+    <style>
+        #root {
+            display: flex;
+            width: 100%;
+        }
+        #root .main {
+            width: 80%;
+            background: yellow;
+            font-size: 36px;
+        }
+        #root a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <!-- 菜单导航栏 -->
+        <menu-component :menus='menus'></menu-component>
+        <!-- 内容展示区 -->
+        <main class="main">
+            <router-view></router-view>
+        </main>
+    </div>
+    <template id='menu-component'>
+        <div>
+            <ul v-for="(item, index) in menus">
+                <router-link :to="item.path">
+                    <li key="index">{{item.name}}</li>
+                </router-link>
+                <!-- <li key="index" v-if="!item.hidden">{{item.name}}</li> -->
+                <!-- 递归本质就是调用自身,在组件内部可以嵌套使用其他组件,甚至可以递归当前组件,递归一定要有一个结束条件
+                     所以在这里我们使用children作为判断条件,组件最终不再递归
+                -->
+                <menu-component v-if="item.children" :menus='item.children'></menu-component>
+            </ul>
+        </div>
+    </template>
+    <script>
+        // 3、创建router实例
+        let router = new VueRouter({
+            routes: [
+                {path: '/hubei', component: {template: '<div>湖北省</div>'}},
+                {path: '/wuhan', component: {template: '<div>武汉市</div>'}},
+                {path: '/hongshan', component: {template: '<div>洪山区</div>'}},
+                {path: '/hanyang', component: {template: '<div>汉阳区</div>'}},
+                {path: '/wuchang', component: {template: '<div>武昌区</div>'}},
+                {path: '/zhejaing', component: {template: '<div>浙江省</div>'}},
+                {path: '/hangzhou', component: {template: '<div>杭州市</div>'}},
+                {path: '/xihu', component: {template: '<div>西湖区</div>'}},
+                {path: '/yuhang', component: {template: '<div>余杭区</div>'}},
+                {path: '/gongshu', component: {template: '<div>拱墅区</div>'}},
+                {path: '/wenzhou', component: {template: '<div>温州市</div>'}},
+                {path: '/sichuan', component: {template: '<div>四川省</div>'}},
+                {path: '/chengdu', component: {template: '<div>成都市</div>'}},
+                {path: '/gaoxin', component: {template: '<div>高新区</div>'}},
+                {path: '/qingyang', component: {template: '<div>青羊区</div>'}},
+                {path: '/hunan', component: {template: '<div>湖南省</div>'}}
+            ]
+        })
+
+        // 2、创建菜单组件
+        const MenuComponent = {
+            name: 'MenuComponent',
+            template: '#menu-component',
+            props: ['menus']
+        }
+
+        // 1、创建vue实例
+        let vm = new Vue({
+            el: '#root',
+            router,
+            components: {
+                MenuComponent
+            },
+            data: {
+                menus: [
+                    {
+                        name: '湖北省',
+                        path: 'hubei',
+                        children: [
+                            {
+                                name: '武汉市',
+                                path: 'wuhan',
+                                children: [
+                                    {
+                                        name: '洪山区',
+                                        path: 'hongshan',
+                                        hidden: true
+                                    },
+                                    {
+                                        name: '汉阳区',
+                                        path: 'hanyang'
+                                    },
+                                    {
+                                        name: '武昌区',
+                                        path: 'wuchang'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '浙江省',
+                        path: 'zhejaing',
+                        hidden: true,
+                        children: [
+                            {
+                                name: '杭州市',
+                                path: 'hangzhou',
+                                children: [
+                                    {
+                                        name: '西湖区',
+                                        path: 'xihu'
+                                    },
+                                    {
+                                        name: '余杭区',
+                                        path: 'yuhang'
+                                    },
+                                    {
+                                        name: '拱墅区',
+                                        path: 'gongshu'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '温州市',
+                                path: 'wenzhou'
+                            }
+                        ]
+                    },
+                    {
+                        name: '四川省',
+                        path: 'sichuan',
+                        children:[
+                            {
+                                name: '成都市',
+                                path: 'chengdu',
+                                children: [
+                                    {
+                                        name: '高新区',
+                                        path: 'gaoxin',
+                                        hidden: true
+                                    },
+                                    {
+                                        name: '青羊区',
+                                        path: 'qingyang'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '湖南省',
+                        path: 'hunan'
+                    }
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

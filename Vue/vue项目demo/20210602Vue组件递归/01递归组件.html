@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.6.13/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <menu-component :menus='menus'></menu-component>
+    </div>
+    <template id='menu-component'>
+        <div>
+            <ul v-for="(item, index) in menus">
+                <li key="index" v-if="!item.hidden">{{item.name}}</li>
+                <!-- 递归本质就是调用自身,在组件内部可以嵌套使用其他组件,甚至可以递归当前组件,递归一定要有一个结束条件
+                     所以在这里我们使用children作为判断条件,组件最终不再递归
+                -->
+                <menu-component v-if="item.children" :menus='item.children'></menu-component>
+            </ul>
+        </div>
+    </template>
+    <script>
+        // 创建菜单组件
+        const MenuComponent = {
+            name: 'MenuComponent',
+            template: '#menu-component',
+            props: ['menus']
+        }
+
+        let vm = new Vue({
+            el: '#root',
+            components: {
+                MenuComponent
+            },
+            data: {
+                menus: [
+                    {
+                        name: '湖北省',
+                        children: [
+                            {
+                                name: '武汉市',
+                                children: [
+                                    {
+                                        name: '洪山区',
+                                        hidden: true
+                                    },
+                                    {
+                                        name: '汉阳区'
+                                    },
+                                    {
+                                        name: '武昌区'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '浙江省',
+                        hidden: true,
+                        children: [
+                            {
+                                name: '杭州市',
+                                children: [
+                                    {
+                                        name: '西湖区'
+                                    },
+                                    {
+                                        name: '余杭区'
+                                    },
+                                    {
+                                        name: '拱墅区'
+                                    }
+                                ]
+                            },
+                            {
+                                name: '温州市'
+                            }
+                        ]
+                    },
+                    {
+                        name: '四川省',
+                        children:[
+                            {
+                                name: '成都市',
+                                children: [
+                                    {
+                                        name: '高新区',
+                                        hidden: true
+                                    },
+                                    {
+                                        name: '青羊区'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: '湖南省'
+                    }
+                ]
+            }
+        })
+    </script>
+</body>
+</html>
