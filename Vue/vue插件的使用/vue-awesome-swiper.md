@@ -3,7 +3,7 @@
 ### 1.安装指定版本，我是用的   3
 
 ```npm
-npm install vue-awesome-swiper@3 --save-dev
+npm install vue-awesome-swiper@3 --save
 ```
 
 ### 2.在vue中引入vue-awesome-swiper（有两种引入）
