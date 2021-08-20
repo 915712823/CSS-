@@ -67,7 +67,7 @@ body {
 
 # 背景图片的使用
 
-![](C:\Users\Administrator\Desktop\项目笔记\实际开发的一些小技巧\image-20210324135517150.png)
+![](C:\Users\Administrator\Desktop\项目笔记\html\css\css实际开发的一些小技巧\image-20210324135517150.png)
 
 # border问题
 
@@ -75,7 +75,7 @@ body {
 
 去除方式：border-collapse:collapse  <font size="4px" color="red">合并相邻边框</font>
 
-![](C:\Users\Administrator\Desktop\项目笔记\实际开发的一些小技巧\image-20210324154733129.png)
+![](C:\Users\Administrator\Desktop\项目笔记\html\css\css实际开发的一些小技巧\image-20210324154733129.png)
 
 # margin问题
 

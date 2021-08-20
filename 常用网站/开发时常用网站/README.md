@@ -70,3 +70,13 @@ Type Scale
 此外，你还可以从谷歌字体库中挑选不同的字体，并尝试不同的字体大小。
 
 这款工具最棒的点在于，在选择你想要的效果后，它会自动生成对应的 CSS 样式代码，你可以直接把它拷贝到 CSS 文件中。同时，它还会自动导入你所选择的字体库并为 html 设置好 `font-family` 属性，这样你就不用花时间在不同的文件中定义字体大小了！
+
+# 7.可视化
+
+[avue-data数据大屏 (avuejs.com)](https://data.avuejs.com/)
+
+
+
+# 8.jquery22
+
+[jQuery插件库-收集最全最新最好的jQuery插件 (jq22.com)](https://www.jq22.com/)

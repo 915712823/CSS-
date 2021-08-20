@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Document</title>
+  <style>
+  	ul li {
+  		list-style: none
+  	}
+  	.info-item label {
+  		display: inline-block;
+  		width: 80px;
+  		height: 35px;
+  		line-height: 35px;
+  		padding-right: 10px;
+  		vertical-align: middle;
+  		text-align: justify;
+  		text-align-last: justify;
+  	}
+  	/*兼容safari浏览器*/
+  	label::after {
+  		content: " ";
+  		display: inline-block;
+  		width: 100%;
+  	}
+  </style>
+</head>
+<body>
+  <ul>
+    <li class="info-item">
+    	<label for="user">用户名</label> 
+    	<input type="text" />
+    </li>
+    <li class="info-item">
+    	<label for="pwd">密码</label> 
+    	<input type="text" />
+    </li>
+    <li class="info-item">
+    	<label for="email">电子邮箱</label> 
+    	<input type="text" />
+    </li>
+  </ul>
+</body>
+</html>
+

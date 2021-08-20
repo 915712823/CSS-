@@ -1,0 +1,46 @@
+body {
+	background-color: #333333;
+}
+
+.big {
+	position: relative;
+	width: 400px;
+	height: 200px;
+	background-color: #eee;
+	background-size: 50% 50%;
+	background-repeat: no-repeat;
+	margin: 100px auto;
+
+}
+
+.st {
+	position: absolute;
+	left: 300px;
+}
+
+.green {
+	position: relative;
+	color: #eee;
+	width: 0;
+	height: 0;
+	border-top: 100px solid green;
+	border-left: 100px solid transparent;
+}
+
+.green>span {
+	position: absolute;
+	top: -74px;
+	left: -60px;
+	transform: rotate(45deg);
+}
+
+.trigger {
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: -50px;
+	top: -100px;
+	border-top: 50px solid #eee;
+	border-left: 50px solid transparent;
+
+}
