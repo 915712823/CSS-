@@ -31,3 +31,8 @@ console.log(getSum(1, 2));      //[3, -1, 2, 0.5]
 
 [pink老师详细讲解]: https://www.bilibili.com/video/BV1Sy4y1C7ha?p=141&amp;spm_id_from=pageDriver
 
+
+
+## JavaScript十大经典设计模式
+
+### 1.发布订阅

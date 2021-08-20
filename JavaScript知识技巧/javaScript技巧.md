@@ -2188,3 +2188,88 @@ Math.pow(2,3); // 8
 //shorthand
 2**3 // 8
 ```
+
+
+
+### // 数组对象排序   
+
+```js
+let objArr = [{ name: 'lisi', age: 20 }, { name: 'yalr', age: 18 }, { name: 'xiaoming', age: 30 },]    
+const sortNumArr = objArr.sort((a, b) => a.age - b.age) 
+```
+
+//根据数字对比排序    
+
+```js
+const sortStrArr = JSON.parse(
+  JSON.stringify(objArr)).sort((a, b) => a.name.localeCompare(b.name)
+)
+```
+
+ //根据字符串排序(中文也可以)    
+
+```js
+console.log(sortNumArr, sortStrArr);     
+```
+
+### // 过滤虚值 ( 0,undefined,null,false,'',"" )    
+
+```js
+let Filtervirtual = [0, 100, '', 'any', null].filter(Boolean) // 输出 [100, "any"]    
+```
+
+
+
+###  // 去除数组中的重复值    const repeatArr = [10, 30, 50, 10, 100, 50, 9]    	
+
+```js
+// 1.通过filter方法    
+const removeRepeat = repeatArr.filter((item, index,arr) => arr.indexOf(item) == index)    	
+
+// 2.通过es6的Set   
+ const setArr = [...new Set(repeatArr)]    
+```
+
+
+
+### //计算字符串中的字符出现的次数   
+
+```js
+let string = 'sadlsakdlzaasd'    
+function counter(str) {       
+let table = {}        
+for (let attr of str) {          
+  table[attr] = table[attr] + 1 || 1      
+  }      
+  return table   
+ }   
+ console.log(counter(string)); // 输出{s: 3, a: 4, d: 3, l: 2, k: 1, z: 1}    
+```
+
+###  // 将十进制转化为二进制或16进制   
+
+```js
+ const num = 10    
+
+const towNum = num.toString(2) // 1010    
+
+const eightNum = num.toString(8) // 12    
+
+const sixteenNum = num.toString(16) // a   
+```
+
+###  // 将object属性转化为属性数组    
+
+```js
+const obj = { a: 1, b: 2, c: 3 }    
+console.log(Object.entries(obj)); // [["a", 1], ["b", 2] ,["c", 3]]  
+```
+
+// 使用解构展开和插入    
+
+```js
+let objB = { a: 100,b: 20 }    
+
+let NewObj = { name:'lisi',...objB,hobby:'sing' } //{name: "lisi", a: 100, b: 20, hobby: "sing"}
+```
+

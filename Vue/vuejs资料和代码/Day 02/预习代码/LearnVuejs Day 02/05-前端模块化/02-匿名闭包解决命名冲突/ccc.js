@@ -1,4 +1,0 @@
-(function () {
-	const flag = true
-
-})()

@@ -417,3 +417,241 @@ module.export = {
 
 
 
+## 用好 Vue 中 v-for 循环的 7 种方法
+
+> **目录**
+>
+> - \1. 始终在 v-for 循环中使用 key
+> - \2. 用 v-for 在一个范围内进行循环
+> - \3. 避免在循环中使用 v-if
+> - \4. 改用计算属性或方法
+> - \5.  把循环放到包装元素中
+> - \6.  在循环中访问索引
+> - \7. 迭代对象
+
+Vue 中的 `v-for` 循环允许你在模板代码中编写 for 循环，尤其是当我们做下面的操作时非常有用：
+
+- 渲染数组或列表
+- 遍历对象属性
+
+在最基本的用法中，`v-for` 循环是这样使用的：
+
+```
+<ul>
+  <li v-for='product in products'>
+    {{ product.name }}
+  </li>
+</ul>
+```
+
+不过它还有一些你不知道的用法，可以使你的 `v-for` 代码更加精确、和高效。
+
+### 1. 始终在 v-for 循环中使用 key
+
+首先要讨论的很多人都已经知道的一种用法：**在 v-for 循环中使用 key**。通过设置唯一的 key 属性，可以确保你的组件按期望的方式工作。
+
+如果我们不使用 key，vue 将会使 DOM 尽可能的高效。这可能意味着 v-for 元素可能出现乱序或其他不可预测的行为。
+
+如果我们对每个元素都有一个**唯一**的键引用，那可以更好地预测 DOM 将会如何被操纵。
+
+```
+<ul>
+  <li 
+    v-for='product in products'
+    :key='product._id'  
+  >
+    {{ product.name }}
+  </li>
+</ul>
+```
+
+### 2. 用 v-for 在一个范围内进行循环
+
+虽然大多数情况下 v-for 用于遍历数组或对象，但肯定存在我们可能只想迭代特定次数的情况。
+
+假设我们要网店创建一个分页系统，并且想在每页只显示 10 个商品品。通过使用变量来跟踪我们当前的页码，可以像这样处理分页：
+
+```
+looping over a range<ul>
+  <li v-for='index in 10' :key='index'>
+    {{ products[page * 10 + index] }}
+  </li>
+</ul>
+```
+
+### 3. 避免在循环中使用 v-if
+
+在 v-for 循环中错误地使用 `v-if` 来过滤数据[1] 是非常常见的。
+
+虽然这样做看起来很直观，但它会导致一个巨大的性能问题—— vue 的 v-for 优先于 v-if 指令 [2]。
+
+这意味着你的组件会遍历每一个元素，然后检查 v-if 条件查看它是否应该被渲染。
+
+> 如果把 v-if 与 v-for 放在一起使用，无论你的条件是什么，都会将遍历数组的每一个元素。
+
+```
+// 不好的代码
+<ul>
+  <li 
+    v-for='product in products' 
+    :key='product._id' 
+    v-if='product.onSale'
+  >
+    {{ product.name }}
+  </li>
+</ul>
+```
+
+上面的代码会引发什么题呢？
+
+假如我们的商品数组中有几千个项目，但是只有 3 个处于销售状态产品需要渲染。那么每次重新渲染时，即使销售的 3 种产品根本没有变化，vue 也必须遍历几千个项目。所以应该尽量避免这种情况。
+
+接下来是两种替代方案，而不是把 v-for 与 v-if 放在一起用。
+
+### 4. 改用计算属性或方法
+
+为了避免上述问题，应该在我们的模板中迭代之前先过滤这些数据。有两种非常相似的方法可以做到：
+
+1. 使用计算属性
+2. 使用过滤方法
+
+至于用哪种方法你自己说了算。下面对两者进行简单的介绍。
+
+首先需要设置一个计算属性。为了打到与之前使用 v-if 相同的效果，代码应该是这样：
+
+```
+<ul>
+  <li v-for='products in productsOnSale' :key='product._id' >
+    {{ product.name }}
+  </li>
+</ul>
+
+// ...
+<script>
+  export default {
+    data () {
+      return {
+        products: []
+      }
+    },
+    computed: {
+      productsOnSale: function () {
+        return this.products.filter(product => product.onSale)
+      }
+    }
+  }
+</script>
+```
+
+这样做有几个好处：
+
+1. 数据属性只会在依赖项发生变化时才会被重新评估
+2. 模板**只会遍历在售商品**，而不是每一个项目
+
+第二种方法的代码几乎和前面一样：
+
+```
+<ul>
+  <li v-for='products in productsOnSale(50))' :key='product._id' >
+    {{ product.name }}
+  </li>
+</ul>
+
+// ...
+
+<script>
+  export default {
+    data () {
+      return {
+        products: []
+      }
+    },
+    methods: {
+      productsOnSale (maxPrice) {
+        return this.products.filter(product => product.onSale && product.price < maxPrice)
+      }
+    }
+  }
+</script>
+```
+
+### 5.  把循环放到包装元素中
+
+有时候你可能想把 `v-for` 与 `v-if` 结合起来使用，用来确定是否需要渲染一个列表。
+
+假如我们只想在用户登录时渲染商品列表该怎么办。
+
+```
+// 不好的代码
+<ul>
+  <li 
+    v-for='product in products' 
+    :key='product._id' 
+    v-if='isLoggedIn' <!-- HERE -->
+  >
+    {{ product.name }}
+  </li>
+</ul>
+```
+
+上面的代码会有什么问题？
+
+和前面一样， vue 模板会优先考虑 `v-for` ，所以它会遍历每个元素并检查 `v-if`。
+
+**即使最终什么都不渲染，也会遍历几千个元素！**
+
+比较简单的解决方案是给代码的 `v-if` 语句换个位置。
+
+```
+// 这样比较好
+<ul v-if='isLoggedIn'> <!-- Much better -->
+  <li 
+    v-for='product in products' 
+    :key='product._id' 
+  >
+    {{ product.name }}
+  </li>
+</ul>
+```
+
+这要好很多，因为如果 `isLoggedIn` 为 `false` 的话根本不需要进行迭代。
+
+### 6.  在循环中访问索引
+
+除了遍历数组并访问每个元素之外，还可以跟踪每个项目的索引。
+
+为了达到这个目的，必须在我们的项目之后添加一个索引值。这非常简单，对于分页、显示列表索引、显示排名等操作都很有用。
+
+```
+<ul>
+  <li v-for='(products, index) in products' :key='product._id' >
+    Product #{{ index }}: {{ product.name }}
+  </li>
+</ul>
+```
+
+### 7. 迭代对象
+
+到目前为止，我们只真正研究了用 `v-for` 遍历数组。但是我们可以很容易地迭代对象的键值对。
+
+与访问元素的索引类似，我们必须向循环中添加另一个值。如果用单个参数循环对象的话将会循环所有项目。
+
+如果我们再添加一个参数，将会得到 **item** 和 **key**。如果添加第三个还可以访问 `v-for` 循环的 **index**。
+
+假设要遍历商品的每个属性，代码应该是这样：
+
+```
+<ul>
+  <li v-for='(products, index) in products' :key='product._id' >
+    <span v-for='(item, key, index) in product' :key='key'>
+      {{ item }}
+    </span>
+  </li>
+</ul>
+```
+
+### Reference
+
+[1]过滤数据:https://learnvue.co/2020/01/how-to-use-vuejs-filters-to-write-better-code/
+
+[2]vue 的 v-for 优先于 v-if 指令 :https://vuejs.org/v2/style-guide/#Avoid-v-if-with-v-for-essential
