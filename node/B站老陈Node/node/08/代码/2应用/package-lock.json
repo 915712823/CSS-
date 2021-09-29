@@ -1,0 +1,11 @@
+{
+  "requires": true,
+  "lockfileVersion": 1,
+  "dependencies": {
+    "lcfs": {
+      "version": "0.1.0",
+      "resolved": "https://registry.npmjs.org/lcfs/-/lcfs-0.1.0.tgz",
+      "integrity": "sha512-o3zpRf64JMvVSPaDmwaiJfEEtR65+JuKcEVjWG31ZUMb1epBoicUIRgAN2mG7k34v1PeeBQtpK6BoP8e9W1V/Q=="
+    }
+  }
+}

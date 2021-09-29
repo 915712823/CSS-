@@ -1,0 +1,19 @@
+HTTP协议
+请求头（放置请求相关的信息）
+GET / HTTP/1.1
+Host: www.mi.com
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: none
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9
+Cookie: xmuuid=XMGUEST-4F5C7240-A50C-11E9-B9AC-AF20E48F0280; mstuid=1562980790494_6760; XM_agreement_sure=1; XM_agreement=0; pageid=81190ccc4d52f577; msttime=https%3A%2F%2Fwww.mi.com%2F; msttime1=https%3A%2F%2Fwww.mi.com%2F; Hm_lvt_c3e3e8b3ea48955284516b186acf0f4e=1574126466,1574476816,1574922517,1574927886; Hm_lpvt_c3e3e8b3ea48955284516b186acf0f4e=1574927886; mstz=||1276266510.2|||; xm_vistor=1562980790494_6760_1574927886325-1574927887880
+
+请求体（一般是POST表单传输的数据）
+username=admin&password=123456

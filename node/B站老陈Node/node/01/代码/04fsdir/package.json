@@ -1,0 +1,15 @@
+{
+        "name": "jjij",
+        "version": "1.0.0",
+        "description": "joasjgo",
+        "main": "hgosagosi",
+        "scripts": {
+          "test": "echo "Error: no test specified" && exit 1"
+        },
+        "keywords": [
+          "'LAOCHEN'"
+        ],
+        "author": "jsgoajso",
+        "license": "ISC",
+        "dependencies": {}
+      }

@@ -1,0 +1,28 @@
+响应头
+HTTP/1.1 200 OK
+Date: Thu, 28 Nov 2019 07:58:11 GMT
+Content-Type: text/html; charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Expires: Thu, 28 Nov 2019 07:59:43 GMT
+Cache-Control: max-age=120
+X-Cacheable: MI-WWW-Cacheable
+Server: MIFE/3.0
+X-Frame-Options: SAMEORIGIN
+Content-Encoding: gzip
+Age: 28
+X-Via: 1.1 qzhdx44:8 (Cdn Cache Server V2.0), 1.1 PSgdstdx2xz35:2 (Cdn Cache Server V2.0)
+X-Ws-Request-Id: 5ddf7e13_PSgdstdx2xz35_25440-403
+
+响应正文
+<!doctype html>
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta charset="UTF-8" />
+<title>小米商城 - 小米9 Pro、小米MIX Alpha、Redmi Note 8，小米电视官方网站</title>
+<head>
+<body>
+...
+</body>
+<html>

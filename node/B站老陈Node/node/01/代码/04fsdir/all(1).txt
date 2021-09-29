@@ -1,0 +1,1071 @@
+﻿hello3﻿hello2//1、数组不能进行二进制数据的操作
+//2、js数组不像java、python等语言效率高
+//3、buffer内存空间开辟出固定大小的内存
+
+//将字符串转成buffer对象
+var str = "helloworld"
+let buf = Buffer.from(str)
+//console.log(buf)
+
+//输出buffer内容
+//console.log(buf.toString())
+
+
+//开辟一个空的buffer(缓存区)
+let buf1 = Buffer.alloc(10)
+//buf1[0] = 256
+
+console.log(buf1)
+
+let buf2 = Buffer.allocUnsafe(10)
+console.log(buf2)let fs = require("fs")
+fs.unlink('lc.txt',function(){
+    console.log("成功删除！")
+})<h1>1今天吃烧烤</h1><h1>2今天吃烧烤</h1><h1>3今天吃烧烤</h1><h1>4今天吃烧烤</h1>var fs = require('fs');
+//导入文件模块
+//node,读写文件也有同步和异步的接口
+
+
+
+
+//同步,等待和阻塞
+//var content = fs.readFileSync('hello.txt',{flag:'r',encoding:"utf-8"})
+//异步
+// fs.readFile("hello.txt",{flag:'r',encoding:"utf-8"},function(err,data){
+//     if(err){
+//         console.log(err)
+//     }else{
+//         console.log(data)
+
+//     }
+//     //console.log(456)
+// })
+
+function fsRead(path){
+    return new Promise(function(resolve,reject){
+        fs.readFile(path,{flag:'r',encoding:"utf-8"},function(err,data){
+            if(err){
+                //console.log(err)
+                //失败执行的内容
+                reject(err)
+
+            }else{
+                //console.log(data)
+                //成功执行的内容
+                resolve(data)
+            }
+            //console.log(456)
+        })
+    })
+}
+
+//console.log(123)
+
+var w1 = fsRead('hello.txt')
+w1.then(function(res){
+    console.log(res)
+})
+
+
+async function ReadList(){
+    var file2 = await fsRead('hello.txt');
+    console.log("1:",file2.toString()+".txt")
+    console.log("1:","hello2.txt")
+    console.log(file2.length)
+    var file3 = await fsRead(file2.trim()+".txt");
+    console.log(file3)
+    var file3Content = await fsRead("hello3.txt".trim())
+    console.log(file3Content)
+}
+
+ReadList()
+
+
+//console.log(content)
+
+鱼香茄子红烧狮子头红烧狮子头
+红烧狮子头
+红烧狮子头
+﻿hello第三个文件let fs = require('fs');
+
+let fd = fs.openSync('hello.txt')
+let buf = Buffer.alloc(1024)
+let content = fs.readSync(fd,buf,0,1024,0)
+console.log(buf.toString())let fs = require('fs')
+//write=>w     read=>r      append =>a
+// fs.writeFile('test.txt',"今晚吃啥\n",{flag:"a",encoding:"utf-8"},function(err){
+//    if(err){
+//        console.log("写入内容出错")
+//    }else{
+//        console.log("写入内容成功")
+//    }
+// })
+
+function writefs(path,content){
+    return new Promise(function(resolve,reject){
+        fs.writeFile(path,content,{flag:"a",encoding:"utf-8"},function(err){
+            if(err){
+                //console.log("写入内容出错")
+                reject(err)
+            }else{
+                resolve(err)
+                //console.log("写入内容成功")
+            }
+        })
+    })
+}
+
+// async function writeList(){
+//     await writefs('lc.txt',"1今天吃烧烤\n");
+//     await writefs('lc.txt',"2今天吃烧烤\n");
+//     await writefs('lc.txt',"3今天吃烧烤\n");
+//     await writefs('lc.txt',"4今天吃烧烤\n");
+// }
+async function writeList(){
+    await writefs('lc.html',"<h1>1今天吃烧烤</h1>");
+    await writefs('lc.html',"<h1>2今天吃烧烤</h1>");
+    await writefs('lc.html',"<h1>3今天吃烧烤</h1>");
+    await writefs('lc.html',"<h1>4今天吃烧烤</h1>");
+}
+
+
+writeList()
+// 引入readline模块
+var readline = require('readline');
+	
+//创建readline接口实例
+var  rl = readline.createInterface({
+    input:process.stdin,
+    output:process.stdout
+});
+
+// question方法
+rl.question("你的名字是？",function(answer){
+    console.log("我的名字是："+answer);
+    // 不加close，则程序不会结束
+    rl.close();
+});
+
+// close事件监听
+rl.on("close", function(){
+   // 结束程序
+    process.exit(0);
+})
+//1、数组不能进行二进制数据的操作
+//2、js数组不像java、python等语言效率高
+//3、buffer内存空间开辟出固定大小的内存
+
+//将字符串转成buffer对象
+var str = "helloworld"
+let buf = Buffer.from(str)
+//console.log(buf)
+
+//输出buffer内容
+//console.log(buf.toString())
+
+
+//开辟一个空的buffer(缓存区)
+let buf1 = Buffer.alloc(10)
+//buf1[0] = 256
+
+console.log(buf1)
+
+let buf2 = Buffer.allocUnsafe(10)
+console.log(buf2)﻿hello2let fs = require("fs")
+fs.unlink('lc.txt',function(){
+    console.log("成功删除！")
+})﻿hello第三个文件﻿hello3var fs = require('fs');
+//导入文件模块
+//node,读写文件也有同步和异步的接口
+
+
+
+
+//同步,等待和阻塞
+//var content = fs.readFileSync('hello.txt',{flag:'r',encoding:"utf-8"})
+//异步
+// fs.readFile("hello.txt",{flag:'r',encoding:"utf-8"},function(err,data){
+//     if(err){
+//         console.log(err)
+//     }else{
+//         console.log(data)
+
+//     }
+//     //console.log(456)
+// })
+
+function fsRead(path){
+    return new Promise(function(resolve,reject){
+        fs.readFile(path,{flag:'r',encoding:"utf-8"},function(err,data){
+            if(err){
+                //console.log(err)
+                //失败执行的内容
+                reject(err)
+
+            }else{
+                //console.log(data)
+                //成功执行的内容
+                resolve(data)
+            }
+            //console.log(456)
+        })
+    })
+}
+
+//console.log(123)
+
+var w1 = fsRead('hello.txt')
+w1.then(function(res){
+    console.log(res)
+})
+
+
+async function ReadList(){
+    var file2 = await fsRead('hello.txt');
+    console.log("1:",file2.toString()+".txt")
+    console.log("1:","hello2.txt")
+    console.log(file2.length)
+    var file3 = await fsRead(file2.trim()+".txt");
+    console.log(file3)
+    var file3Content = await fsRead("hello3.txt".trim())
+    console.log(file3Content)
+}
+
+ReadList()
+
+
+//console.log(content)
+
+let fs = require('fs');
+
+let fd = fs.openSync('hello.txt')
+let buf = Buffer.alloc(1024)
+let content = fs.readSync(fd,buf,0,1024,0)
+console.log(buf.toString())鱼香茄子红烧狮子头红烧狮子头
+红烧狮子头
+红烧狮子头
+<h1>1今天吃烧烤</h1><h1>2今天吃烧烤</h1><h1>3今天吃烧烤</h1><h1>4今天吃烧烤</h1>let fs = require('fs')
+//write=>w     read=>r      append =>a
+// fs.writeFile('test.txt',"今晚吃啥\n",{flag:"a",encoding:"utf-8"},function(err){
+//    if(err){
+//        console.log("写入内容出错")
+//    }else{
+//        console.log("写入内容成功")
+//    }
+// })
+
+function writefs(path,content){
+    return new Promise(function(resolve,reject){
+        fs.writeFile(path,content,{flag:"a",encoding:"utf-8"},function(err){
+            if(err){
+                //console.log("写入内容出错")
+                reject(err)
+            }else{
+                resolve(err)
+                //console.log("写入内容成功")
+            }
+        })
+    })
+}
+
+// async function writeList(){
+//     await writefs('lc.txt',"1今天吃烧烤\n");
+//     await writefs('lc.txt',"2今天吃烧烤\n");
+//     await writefs('lc.txt',"3今天吃烧烤\n");
+//     await writefs('lc.txt',"4今天吃烧烤\n");
+// }
+async function writeList(){
+    await writefs('lc.html',"<h1>1今天吃烧烤</h1>");
+    await writefs('lc.html',"<h1>2今天吃烧烤</h1>");
+    await writefs('lc.html',"<h1>3今天吃烧烤</h1>");
+    await writefs('lc.html',"<h1>4今天吃烧烤</h1>");
+}
+
+
+writeList()
+// 引入readline模块
+var readline = require('readline');
+	
+//创建readline接口实例
+var  rl = readline.createInterface({
+    input:process.stdin,
+    output:process.stdout
+});
+
+// question方法
+rl.question("你的名字是？",function(answer){
+    console.log("我的名字是："+answer);
+    // 不加close，则程序不会结束
+    rl.close();
+});
+
+// close事件监听
+rl.on("close", function(){
+   // 结束程序
+    process.exit(0);
+})
+﻿hello3//1、数组不能进行二进制数据的操作
+//2、js数组不像java、python等语言效率高
+//3、buffer内存空间开辟出固定大小的内存
+
+//将字符串转成buffer对象
+var str = "helloworld"
+let buf = Buffer.from(str)
+//console.log(buf)
+
+//输出buffer内容
+//console.log(buf.toString())
+
+
+//开辟一个空的buffer(缓存区)
+let buf1 = Buffer.alloc(10)
+//buf1[0] = 256
+
+console.log(buf1)
+
+let buf2 = Buffer.allocUnsafe(10)
+console.log(buf2)﻿hello第三个文件﻿hello2let fs = require("fs")
+fs.unlink('lc.txt',function(){
+    console.log("成功删除！")
+})let fs = require('fs');
+
+let fd = fs.openSync('hello.txt')
+let buf = Buffer.alloc(1024)
+let content = fs.readSync(fd,buf,0,1024,0)
+console.log(buf.toString())var fs = require('fs');
+//导入文件模块
+//node,读写文件也有同步和异步的接口
+
+
+
+
+//同步,等待和阻塞
+//var content = fs.readFileSync('hello.txt',{flag:'r',encoding:"utf-8"})
+//异步
+// fs.readFile("hello.txt",{flag:'r',encoding:"utf-8"},function(err,data){
+//     if(err){
+//         console.log(err)
+//     }else{
+//         console.log(data)
+
+//     }
+//     //console.log(456)
+// })
+
+function fsRead(path){
+    return new Promise(function(resolve,reject){
+        fs.readFile(path,{flag:'r',encoding:"utf-8"},function(err,data){
+            if(err){
+                //console.log(err)
+                //失败执行的内容
+                reject(err)
+
+            }else{
+                //console.log(data)
+                //成功执行的内容
+                resolve(data)
+            }
+            //console.log(456)
+        })
+    })
+}
+
+//console.log(123)
+
+var w1 = fsRead('hello.txt')
+w1.then(function(res){
+    console.log(res)
+})
+
+
+async function ReadList(){
+    var file2 = await fsRead('hello.txt');
+    console.log("1:",file2.toString()+".txt")
+    console.log("1:","hello2.txt")
+    console.log(file2.length)
+    var file3 = await fsRead(file2.trim()+".txt");
+    console.log(file3)
+    var file3Content = await fsRead("hello3.txt".trim())
+    console.log(file3Content)
+}
+
+ReadList()
+
+
+//console.log(content)
+
+let fs = require('fs')
+//write=>w     read=>r      append =>a
+// fs.writeFile('test.txt',"今晚吃啥\n",{flag:"a",encoding:"utf-8"},function(err){
+//    if(err){
+//        console.log("写入内容出错")
+//    }else{
+//        console.log("写入内容成功")
+//    }
+// })
+
+function writefs(path,content){
+    return new Promise(function(resolve,reject){
+        fs.writeFile(path,content,{flag:"a",encoding:"utf-8"},function(err){
+            if(err){
+                //console.log("写入内容出错")
+                reject(err)
+            }else{
+                resolve(err)
+                //console.log("写入内容成功")
+            }
+        })
+    })
+}
+
+// async function writeList(){
+//     await writefs('lc.txt',"1今天吃烧烤\n");
+//     await writefs('lc.txt',"2今天吃烧烤\n");
+//     await writefs('lc.txt',"3今天吃烧烤\n");
+//     await writefs('lc.txt',"4今天吃烧烤\n");
+// }
+async function writeList(){
+    await writefs('lc.html',"<h1>1今天吃烧烤</h1>");
+    await writefs('lc.html',"<h1>2今天吃烧烤</h1>");
+    await writefs('lc.html',"<h1>3今天吃烧烤</h1>");
+    await writefs('lc.html',"<h1>4今天吃烧烤</h1>");
+}
+
+
+writeList()
+鱼香茄子红烧狮子头红烧狮子头
+红烧狮子头
+红烧狮子头
+<h1>1今天吃烧烤</h1><h1>2今天吃烧烤</h1><h1>3今天吃烧烤</h1><h1>4今天吃烧烤</h1>// 引入readline模块
+var readline = require('readline');
+	
+//创建readline接口实例
+var  rl = readline.createInterface({
+    input:process.stdin,
+    output:process.stdout
+});
+
+// question方法
+rl.question("你的名字是？",function(answer){
+    console.log("我的名字是："+answer);
+    // 不加close，则程序不会结束
+    rl.close();
+});
+
+// close事件监听
+rl.on("close", function(){
+   // 结束程序
+    process.exit(0);
+})
+//1、数组不能进行二进制数据的操作
+//2、js数组不像java、python等语言效率高
+//3、buffer内存空间开辟出固定大小的内存
+
+//将字符串转成buffer对象
+var str = "helloworld"
+let buf = Buffer.from(str)
+//console.log(buf)
+
+//输出buffer内容
+//console.log(buf.toString())
+
+
+//开辟一个空的buffer(缓存区)
+let buf1 = Buffer.alloc(10)
+//buf1[0] = 256
+
+console.log(buf1)
+
+let buf2 = Buffer.allocUnsafe(10)
+console.log(buf2)﻿hello2let fs = require("fs")
+fs.unlink('lc.txt',function(){
+    console.log("成功删除！")
+})var fs = require('fs');
+//导入文件模块
+//node,读写文件也有同步和异步的接口
+
+
+
+
+//同步,等待和阻塞
+//var content = fs.readFileSync('hello.txt',{flag:'r',encoding:"utf-8"})
+//异步
+// fs.readFile("hello.txt",{flag:'r',encoding:"utf-8"},function(err,data){
+//     if(err){
+//         console.log(err)
+//     }else{
+//         console.log(data)
+
+//     }
+//     //console.log(456)
+// })
+
+function fsRead(path){
+    return new Promise(function(resolve,reject){
+        fs.readFile(path,{flag:'r',encoding:"utf-8"},function(err,data){
+            if(err){
+                //console.log(err)
+                //失败执行的内容
+                reject(err)
+
+            }else{
+                //console.log(data)
+                //成功执行的内容
+                resolve(data)
+            }
+            //console.log(456)
+        })
+    })
+}
+
+//console.log(123)
+
+var w1 = fsRead('hello.txt')
+w1.then(function(res){
+    console.log(res)
+})
+
+
+async function ReadList(){
+    var file2 = await fsRead('hello.txt');
+    console.log("1:",file2.toString()+".txt")
+    console.log("1:","hello2.txt")
+    console.log(file2.length)
+    var file3 = await fsRead(file2.trim()+".txt");
+    console.log(file3)
+    var file3Content = await fsRead("hello3.txt".trim())
+    console.log(file3Content)
+}
+
+ReadList()
+
+
+//console.log(content)
+
+﻿hello3﻿hello第三个文件鱼香茄子红烧狮子头红烧狮子头
+红烧狮子头
+红烧狮子头
+<h1>1今天吃烧烤</h1><h1>2今天吃烧烤</h1><h1>3今天吃烧烤</h1><h1>4今天吃烧烤</h1>let fs = require('fs');
+
+let fd = fs.openSync('hello.txt')
+let buf = Buffer.alloc(1024)
+let content = fs.readSync(fd,buf,0,1024,0)
+console.log(buf.toString())let fs = require('fs')
+//write=>w     read=>r      append =>a
+// fs.writeFile('test.txt',"今晚吃啥\n",{flag:"a",encoding:"utf-8"},function(err){
+//    if(err){
+//        console.log("写入内容出错")
+//    }else{
+//        console.log("写入内容成功")
+//    }
+// })
+
+function writefs(path,content){
+    return new Promise(function(resolve,reject){
+        fs.writeFile(path,content,{flag:"a",encoding:"utf-8"},function(err){
+            if(err){
+                //console.log("写入内容出错")
+                reject(err)
+            }else{
+                resolve(err)
+                //console.log("写入内容成功")
+            }
+        })
+    })
+}
+
+// async function writeList(){
+//     await writefs('lc.txt',"1今天吃烧烤\n");
+//     await writefs('lc.txt',"2今天吃烧烤\n");
+//     await writefs('lc.txt',"3今天吃烧烤\n");
+//     await writefs('lc.txt',"4今天吃烧烤\n");
+// }
+async function writeList(){
+    await writefs('lc.html',"<h1>1今天吃烧烤</h1>");
+    await writefs('lc.html',"<h1>2今天吃烧烤</h1>");
+    await writefs('lc.html',"<h1>3今天吃烧烤</h1>");
+    await writefs('lc.html',"<h1>4今天吃烧烤</h1>");
+}
+
+
+writeList()
+// 引入readline模块
+var readline = require('readline');
+	
+//创建readline接口实例
+var  rl = readline.createInterface({
+    input:process.stdin,
+    output:process.stdout
+});
+
+// question方法
+rl.question("你的名字是？",function(answer){
+    console.log("我的名字是："+answer);
+    // 不加close，则程序不会结束
+    rl.close();
+});
+
+// close事件监听
+rl.on("close", function(){
+   // 结束程序
+    process.exit(0);
+})
+//1、数组不能进行二进制数据的操作
+//2、js数组不像java、python等语言效率高
+//3、buffer内存空间开辟出固定大小的内存
+
+//将字符串转成buffer对象
+var str = "helloworld"
+let buf = Buffer.from(str)
+//console.log(buf)
+
+//输出buffer内容
+//console.log(buf.toString())
+
+
+//开辟一个空的buffer(缓存区)
+let buf1 = Buffer.alloc(10)
+//buf1[0] = 256
+
+console.log(buf1)
+
+let buf2 = Buffer.allocUnsafe(10)
+console.log(buf2)﻿hello2let fs = require("fs")
+fs.unlink('lc.txt',function(){
+    console.log("成功删除！")
+})﻿hello3var fs = require('fs');
+//导入文件模块
+//node,读写文件也有同步和异步的接口
+
+
+
+
+//同步,等待和阻塞
+//var content = fs.readFileSync('hello.txt',{flag:'r',encoding:"utf-8"})
+//异步
+// fs.readFile("hello.txt",{flag:'r',encoding:"utf-8"},function(err,data){
+//     if(err){
+//         console.log(err)
+//     }else{
+//         console.log(data)
+
+//     }
+//     //console.log(456)
+// })
+
+function fsRead(path){
+    return new Promise(function(resolve,reject){
+        fs.readFile(path,{flag:'r',encoding:"utf-8"},function(err,data){
+            if(err){
+                //console.log(err)
+                //失败执行的内容
+                reject(err)
+
+            }else{
+                //console.log(data)
+                //成功执行的内容
+                resolve(data)
+            }
+            //console.log(456)
+        })
+    })
+}
+
+//console.log(123)
+
+var w1 = fsRead('hello.txt')
+w1.then(function(res){
+    console.log(res)
+})
+
+
+async function ReadList(){
+    var file2 = await fsRead('hello.txt');
+    console.log("1:",file2.toString()+".txt")
+    console.log("1:","hello2.txt")
+    console.log(file2.length)
+    var file3 = await fsRead(file2.trim()+".txt");
+    console.log(file3)
+    var file3Content = await fsRead("hello3.txt".trim())
+    console.log(file3Content)
+}
+
+ReadList()
+
+
+//console.log(content)
+
+﻿hello第三个文件<h1>1今天吃烧烤</h1><h1>2今天吃烧烤</h1><h1>3今天吃烧烤</h1><h1>4今天吃烧烤</h1>let fs = require('fs');
+
+let fd = fs.openSync('hello.txt')
+let buf = Buffer.alloc(1024)
+let content = fs.readSync(fd,buf,0,1024,0)
+console.log(buf.toString())let fs = require('fs')
+//write=>w     read=>r      append =>a
+// fs.writeFile('test.txt',"今晚吃啥\n",{flag:"a",encoding:"utf-8"},function(err){
+//    if(err){
+//        console.log("写入内容出错")
+//    }else{
+//        console.log("写入内容成功")
+//    }
+// })
+
+function writefs(path,content){
+    return new Promise(function(resolve,reject){
+        fs.writeFile(path,content,{flag:"a",encoding:"utf-8"},function(err){
+            if(err){
+                //console.log("写入内容出错")
+                reject(err)
+            }else{
+                resolve(err)
+                //console.log("写入内容成功")
+            }
+        })
+    })
+}
+
+// async function writeList(){
+//     await writefs('lc.txt',"1今天吃烧烤\n");
+//     await writefs('lc.txt',"2今天吃烧烤\n");
+//     await writefs('lc.txt',"3今天吃烧烤\n");
+//     await writefs('lc.txt',"4今天吃烧烤\n");
+// }
+async function writeList(){
+    await writefs('lc.html',"<h1>1今天吃烧烤</h1>");
+    await writefs('lc.html',"<h1>2今天吃烧烤</h1>");
+    await writefs('lc.html',"<h1>3今天吃烧烤</h1>");
+    await writefs('lc.html',"<h1>4今天吃烧烤</h1>");
+}
+
+
+writeList()
+鱼香茄子红烧狮子头红烧狮子头
+红烧狮子头
+红烧狮子头
+// 引入readline模块
+var readline = require('readline');
+	
+//创建readline接口实例
+var  rl = readline.createInterface({
+    input:process.stdin,
+    output:process.stdout
+});
+
+// question方法
+rl.question("你的名字是？",function(answer){
+    console.log("我的名字是："+answer);
+    // 不加close，则程序不会结束
+    rl.close();
+});
+
+// close事件监听
+rl.on("close", function(){
+   // 结束程序
+    process.exit(0);
+})
+let fs = require("fs")
+fs.unlink('lc.txt',function(){
+    console.log("成功删除！")
+})﻿hello2//1、数组不能进行二进制数据的操作
+//2、js数组不像java、python等语言效率高
+//3、buffer内存空间开辟出固定大小的内存
+
+//将字符串转成buffer对象
+var str = "helloworld"
+let buf = Buffer.from(str)
+//console.log(buf)
+
+//输出buffer内容
+//console.log(buf.toString())
+
+
+//开辟一个空的buffer(缓存区)
+let buf1 = Buffer.alloc(10)
+//buf1[0] = 256
+
+console.log(buf1)
+
+let buf2 = Buffer.allocUnsafe(10)
+console.log(buf2)﻿hello3var fs = require('fs');
+//导入文件模块
+//node,读写文件也有同步和异步的接口
+
+
+
+
+//同步,等待和阻塞
+//var content = fs.readFileSync('hello.txt',{flag:'r',encoding:"utf-8"})
+//异步
+// fs.readFile("hello.txt",{flag:'r',encoding:"utf-8"},function(err,data){
+//     if(err){
+//         console.log(err)
+//     }else{
+//         console.log(data)
+
+//     }
+//     //console.log(456)
+// })
+
+function fsRead(path){
+    return new Promise(function(resolve,reject){
+        fs.readFile(path,{flag:'r',encoding:"utf-8"},function(err,data){
+            if(err){
+                //console.log(err)
+                //失败执行的内容
+                reject(err)
+
+            }else{
+                //console.log(data)
+                //成功执行的内容
+                resolve(data)
+            }
+            //console.log(456)
+        })
+    })
+}
+
+//console.log(123)
+
+var w1 = fsRead('hello.txt')
+w1.then(function(res){
+    console.log(res)
+})
+
+
+async function ReadList(){
+    var file2 = await fsRead('hello.txt');
+    console.log("1:",file2.toString()+".txt")
+    console.log("1:","hello2.txt")
+    console.log(file2.length)
+    var file3 = await fsRead(file2.trim()+".txt");
+    console.log(file3)
+    var file3Content = await fsRead("hello3.txt".trim())
+    console.log(file3Content)
+}
+
+ReadList()
+
+
+//console.log(content)
+
+﻿hello第三个文件<h1>1今天吃烧烤</h1><h1>2今天吃烧烤</h1><h1>3今天吃烧烤</h1><h1>4今天吃烧烤</h1>let fs = require('fs');
+
+let fd = fs.openSync('hello.txt')
+let buf = Buffer.alloc(1024)
+let content = fs.readSync(fd,buf,0,1024,0)
+console.log(buf.toString())let fs = require('fs')
+//write=>w     read=>r      append =>a
+// fs.writeFile('test.txt',"今晚吃啥\n",{flag:"a",encoding:"utf-8"},function(err){
+//    if(err){
+//        console.log("写入内容出错")
+//    }else{
+//        console.log("写入内容成功")
+//    }
+// })
+
+function writefs(path,content){
+    return new Promise(function(resolve,reject){
+        fs.writeFile(path,content,{flag:"a",encoding:"utf-8"},function(err){
+            if(err){
+                //console.log("写入内容出错")
+                reject(err)
+            }else{
+                resolve(err)
+                //console.log("写入内容成功")
+            }
+        })
+    })
+}
+
+// async function writeList(){
+//     await writefs('lc.txt',"1今天吃烧烤\n");
+//     await writefs('lc.txt',"2今天吃烧烤\n");
+//     await writefs('lc.txt',"3今天吃烧烤\n");
+//     await writefs('lc.txt',"4今天吃烧烤\n");
+// }
+async function writeList(){
+    await writefs('lc.html',"<h1>1今天吃烧烤</h1>");
+    await writefs('lc.html',"<h1>2今天吃烧烤</h1>");
+    await writefs('lc.html',"<h1>3今天吃烧烤</h1>");
+    await writefs('lc.html',"<h1>4今天吃烧烤</h1>");
+}
+
+
+writeList()
+鱼香茄子红烧狮子头红烧狮子头
+红烧狮子头
+红烧狮子头
+// 引入readline模块
+var readline = require('readline');
+	
+//创建readline接口实例
+var  rl = readline.createInterface({
+    input:process.stdin,
+    output:process.stdout
+});
+
+// question方法
+rl.question("你的名字是？",function(answer){
+    console.log("我的名字是："+answer);
+    // 不加close，则程序不会结束
+    rl.close();
+});
+
+// close事件监听
+rl.on("close", function(){
+   // 结束程序
+    process.exit(0);
+})
+let fs = require("fs")
+fs.unlink('lc.txt',function(){
+    console.log("成功删除！")
+})﻿hello3﻿hello2<h1>1今天吃烧烤</h1><h1>2今天吃烧烤</h1><h1>3今天吃烧烤</h1><h1>4今天吃烧烤</h1>﻿hello第三个文件//1、数组不能进行二进制数据的操作
+//2、js数组不像java、python等语言效率高
+//3、buffer内存空间开辟出固定大小的内存
+
+//将字符串转成buffer对象
+var str = "helloworld"
+let buf = Buffer.from(str)
+//console.log(buf)
+
+//输出buffer内容
+//console.log(buf.toString())
+
+
+//开辟一个空的buffer(缓存区)
+let buf1 = Buffer.alloc(10)
+//buf1[0] = 256
+
+console.log(buf1)
+
+let buf2 = Buffer.allocUnsafe(10)
+console.log(buf2)let fs = require('fs');
+
+let fd = fs.openSync('hello.txt')
+let buf = Buffer.alloc(1024)
+let content = fs.readSync(fd,buf,0,1024,0)
+console.log(buf.toString())var fs = require('fs');
+//导入文件模块
+//node,读写文件也有同步和异步的接口
+
+
+
+
+//同步,等待和阻塞
+//var content = fs.readFileSync('hello.txt',{flag:'r',encoding:"utf-8"})
+//异步
+// fs.readFile("hello.txt",{flag:'r',encoding:"utf-8"},function(err,data){
+//     if(err){
+//         console.log(err)
+//     }else{
+//         console.log(data)
+
+//     }
+//     //console.log(456)
+// })
+
+function fsRead(path){
+    return new Promise(function(resolve,reject){
+        fs.readFile(path,{flag:'r',encoding:"utf-8"},function(err,data){
+            if(err){
+                //console.log(err)
+                //失败执行的内容
+                reject(err)
+
+            }else{
+                //console.log(data)
+                //成功执行的内容
+                resolve(data)
+            }
+            //console.log(456)
+        })
+    })
+}
+
+//console.log(123)
+
+var w1 = fsRead('hello.txt')
+w1.then(function(res){
+    console.log(res)
+})
+
+
+async function ReadList(){
+    var file2 = await fsRead('hello.txt');
+    console.log("1:",file2.toString()+".txt")
+    console.log("1:","hello2.txt")
+    console.log(file2.length)
+    var file3 = await fsRead(file2.trim()+".txt");
+    console.log(file3)
+    var file3Content = await fsRead("hello3.txt".trim())
+    console.log(file3Content)
+}
+
+ReadList()
+
+
+//console.log(content)
+
+鱼香茄子红烧狮子头红烧狮子头
+红烧狮子头
+红烧狮子头
+let fs = require('fs')
+//write=>w     read=>r      append =>a
+// fs.writeFile('test.txt',"今晚吃啥\n",{flag:"a",encoding:"utf-8"},function(err){
+//    if(err){
+//        console.log("写入内容出错")
+//    }else{
+//        console.log("写入内容成功")
+//    }
+// })
+
+function writefs(path,content){
+    return new Promise(function(resolve,reject){
+        fs.writeFile(path,content,{flag:"a",encoding:"utf-8"},function(err){
+            if(err){
+                //console.log("写入内容出错")
+                reject(err)
+            }else{
+                resolve(err)
+                //console.log("写入内容成功")
+            }
+        })
+    })
+}
+
+// async function writeList(){
+//     await writefs('lc.txt',"1今天吃烧烤\n");
+//     await writefs('lc.txt',"2今天吃烧烤\n");
+//     await writefs('lc.txt',"3今天吃烧烤\n");
+//     await writefs('lc.txt',"4今天吃烧烤\n");
+// }
+async function writeList(){
+    await writefs('lc.html',"<h1>1今天吃烧烤</h1>");
+    await writefs('lc.html',"<h1>2今天吃烧烤</h1>");
+    await writefs('lc.html',"<h1>3今天吃烧烤</h1>");
+    await writefs('lc.html',"<h1>4今天吃烧烤</h1>");
+}
+
+
+writeList()
+// 引入readline模块
+var readline = require('readline');
+	
+//创建readline接口实例
+var  rl = readline.createInterface({
+    input:process.stdin,
+    output:process.stdout
+});
+
+// question方法
+rl.question("你的名字是？",function(answer){
+    console.log("我的名字是："+answer);
+    // 不加close，则程序不会结束
+    rl.close();
+});
+
+// close事件监听
+rl.on("close", function(){
+   // 结束程序
+    process.exit(0);
+})

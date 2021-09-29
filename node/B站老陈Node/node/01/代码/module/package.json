@@ -1,0 +1,15 @@
+{
+  "name": "lcpackage",
+  "version": "1.0.0",
+  "description": "\"老陈设计插进\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "'LAOCHEN'"
+  ],
+  "author": "'LAOCHEN'",
+  "license": "ISC",
+  "dependencies": {}
+}
